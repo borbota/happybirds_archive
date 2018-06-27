@@ -36,7 +36,7 @@
               <a class="nav-link js-scroll-trigger" href="#ml">iterations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#insights_1">description</a>
+              <a class="nav-link js-scroll-trigger" href="#insights_1">insights</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#insights_2">topics</a>
@@ -106,12 +106,110 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Description of the dataset</h2>
-            <p class="lead">Unsure to have such a summary or highlight at the beginning of each part.</p>
-            <p>Or just have the text with this type of font</p>
+            <h2>Insightst</h2>
+            <p class="lead">Ad hoc analysis of a heavily unbalanced dataset, or What was wrong with Iberia?</p>
+            <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Spanair, Ryanair, Iberia, Aireurope, and Norwegianairline. As discussed above, the tweets' sentiments were annotated by the students of the postgrad course. The chart below shows the distribution of the number of tweets by each sentiment: neutral, positive, and negative. The busiest day was December 14, 2017 – most of the tweets issued on that day being negative.</p>
+            <p><p/>
             <img src="img/sentiment_timeline_ES.png" alt="sentiment timeline" width="700" height="300">
-            <p>lorem ipsum</p>
-            <img src="img/airlines_by_day_ES.png" alt="airline_mentions_by_day" width="700" height="300">
+            <p align="justify">If we look for the airlines mentioned, we see that it was Iberia, which was mentioned mostly on December 12, 2017. Actually, out of all airlines, mostly Iberia and Ryanair were mentioned in the tweets. Alltogether Iberia was mentioned 5100 times, whiel Ryanair 1938 and Vueling 204 times. All the rest were way below 200 mentions in the analyzed period. Thus we are focusing on Iberia.</p>
+            <img src="img/airlines_by_day_ES_original_colors.png" alt="airline_mentions_by_day" width="700" height="300">
+            <p><p/>
+            <p align="justify">But in what context were the airlines mentioned? The table below shows the rank of each word in terms of number of ocurrence by airline. (The word "url" are all links replaced by the word "url".)<p/>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-7btt{font-weight:bold;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-abip{background-color:#f9f9f9;border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 483px"; align = "center">
+<colgroup>
+<col style="width: 85px">
+<col style="width: 96px">
+<col style="width: 96px">
+<col style="width: 100px">
+<col style="width: 106px">
+</colgroup>
+  <tr>
+    <th class="tg-7btt">rank</th>
+    <th class="tg-7btt">Iberia</th>
+    <th class="tg-7btt">Ryanair</th>
+    <th class="tg-7btt">Vueling</th>
+    <th class="tg-7btt">Spanair</th>
+  </tr>
+  <tr>
+    <td class="tg-abip">1</td>
+    <td class="tg-abip">@iberia</td>
+    <td class="tg-abip">ryanair</td>
+    <td class="tg-abip">url</td>
+    <td class="tg-abip">spanair</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">2</td>
+    <td class="tg-c3ow">url</td>
+    <td class="tg-c3ow">url</td>
+    <td class="tg-c3ow">@vueling</td>
+    <td class="tg-c3ow">url</td>
+  </tr>
+  <tr>
+    <td class="tg-abip">3</td>
+    <td class="tg-abip">iberia</td>
+    <td class="tg-abip">@ryanair</td>
+    <td class="tg-abip">vueling</td>
+    <td class="tg-abip">accidente</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">4</td>
+    <td class="tg-c3ow">vuelo</td>
+    <td class="tg-c3ow">pilotos</td>
+    <td class="tg-c3ow">@iberia</td>
+    <td class="tg-c3ow">españa</td>
+  </tr>
+  <tr>
+    <td class="tg-abip">5</td>
+    <td class="tg-abip">hola</td>
+    <td class="tg-abip">huelga</td>
+    <td class="tg-abip">iberia</td>
+    <td class="tg-abip">video</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">6</td>
+    <td class="tg-c3ow">solo</td>
+    <td class="tg-c3ow">vuelos</td>
+    <td class="tg-c3ow">ryanair</td>
+    <td class="tg-c3ow">vuelo</td>
+  </tr>
+  <tr>
+    <td class="tg-abip">7</td>
+    <td class="tg-abip">gracias</td>
+    <td class="tg-abip">vuelo</td>
+    <td class="tg-abip">@ryanair</td>
+    <td class="tg-abip">letal</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">8</td>
+    <td class="tg-c3ow">mejor</td>
+    <td class="tg-c3ow">españa</td>
+    <td class="tg-c3ow">compañía</td>
+    <td class="tg-c3ow">cadas</td>
+  </tr>
+  <tr>
+    <td class="tg-abip">9</td>
+    <td class="tg-abip">destino</td>
+    <td class="tg-abip">avión</td>
+    <td class="tg-abip">vuelo</td>
+    <td class="tg-abip">barajas</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">10</td>
+    <td class="tg-c3ow">madrid</td>
+    <td class="tg-c3ow">euros</td>
+    <td class="tg-c3ow">vuelos</td>
+    <td class="tg-c3ow">canal</td>
+  </tr>
+</table>
+
 
           </div>
         </div>
