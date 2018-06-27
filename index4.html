@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>4</title>
+    <title>happybirds</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,7 +64,7 @@
           <div class="col-lg-8 mx-auto">
             <h2>Introduction</h2>
             <!-- <p class="lead"> -->
-            <p align="justify">This is the project documentation for the happybirds team’s solution for the capstone project during the postgraduate Data science and big data course of the University of Barcelona. Find more information about the program <a href="http://www.ub.edu/datascience/postgraduate/">here</a>. The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team has done and what technologies we have used.</p>
+            <p class="lead"; align="justify">This is the project documentation for the happybirds team’s solution for the capstone project during the postgraduate Data science and big data course of the University of Barcelona. Find more information about the program <a href="http://www.ub.edu/datascience/postgraduate/">here</a>. The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team has done and what technologies we have used.</p>
             
             <p align="justify">For the solution presented below, we have developed a project in python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
             
@@ -72,7 +72,7 @@
 
             <p align="justify">The main motivation on working on a python project instead on doing it in a lengthy Jupyter Notebook was the flexibility a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea taking into account that it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by cleaning the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing a subsequent caos. On the other hand, having a final version as a python project enables any team member to execute the parts in the way she prefers. Also, it allows the team members to go as deep as they want if the code is correctly modularized. Finally, each team member has the chance to do this call by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
 
-            <p align="justify">The sections below cover the the in-depth description of the steps taken towards the final solution in a chronological order, the results obtained, and the next steps that could have been potentially done.</p>
+            <p align="justify">The sections below cover the the in-depth description of the steps taken towards the final solution in a chronological order, the results obtained, and the next steps that could have been potentially done on the Spanish dataset.</p>
 
 
             <p>The project documentation covers the following:</p>
@@ -120,8 +120,15 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Topic modelling</h2>
-            <p class="lead">Here we can put even more insights</p>
-            <img src="img/airline_mentions_by_day_ES.png" alt="airline mentions">
+            <p>Here we will discuss the topic modelling, but let's see how to visualize it. Please note that this is not the final version of the topic modelling.</p>
+            <p>We can show the topic modelling like an embedded website:</p>
+
+             <iframe src="https://borbota.github.io/jatszos/UB/lda.html"; width = "1000", height = "400"; frameborder="0">
+             </iframe> 
+             <p>Or as a picture working as a link:</p>
+            <a target="_blank" href="https://borbota.github.io/jatszos/UB/lda.html">
+              <img src="img/static_lda_pic.png" alt="lda picture">
+           </a>
           </div>
         </div>
       </div>
