@@ -96,7 +96,9 @@
 
             <p>This is where we can explain about the ML script, what and how did we do. The picture could be a screenshot of a confusion matrix or the script itself.</p>
 
+            <div style="width:image width px; font-size:80%; text-align:center;">
             <img src="img/capstone_project_flow.png" alt="capstone_project_flow" width="700" height="500">
+            Project flow</div>
           </div>
         </div>
       </div>
@@ -107,14 +109,21 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Insights</h2>
-            <p class="lead">Ad hoc analysis of a heavily unbalanced dataset, or What was wrong with Iberia?</p>
-            <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Spanair, Ryanair, Iberia, Aireurope, and Norwegianairline. As discussed above, the tweets' sentiments were annotated by the students of the postgrad course. The chart below shows the distribution of the number of tweets by each sentiment: neutral, positive, and negative. The busiest day was December 14, 2017 – most of the tweets issued on that day being negative.</p>
+            <p class="lead">Ad hoc analysis of an unbalanced dataset, or What was wrong with Iberia?</p>
+            <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Spanair, Ryanair, Iberia, Aireurope, and Norwegianairline. As discussed above, the tweets' sentiments were annotated by the students of the postgrad course. The 48.1 percent of the tweets were annotated as negative, 32.5 percent as neutral, and 19.4 percent as positive. The chart below shows the distribution of the number of tweets by each sentiment by day. The day with the highest traffic was December 14, 2017 – most of the tweets issued being negative.</p>
             <p><p/>
-            <img src="img/sentiment_timeline_ES.png" alt="sentiment timeline" width="700" height="300">
+            <div style="width:image width px; font-size:80%; text-align:center;">
+              <img src="img/sentiment_timeline_ES.png" alt="sentiment timeline" width="700" height="300">
+            Distribution of sentiments by day</div>
+            <p><p/>
             <p align="justify">If we look for the airlines mentioned, we see that it was Iberia, which was mentioned mostly on December 12, 2017. Actually, out of all airlines, mostly Iberia and Ryanair were mentioned in the tweets. Alltogether Iberia was mentioned 5100 times, whiel Ryanair 1938 and Vueling 204 times. All the rest were way below 200 mentions in the analyzed period. Thus we are focusing on Iberia.</p>
+            <p><p/>
             <img src="img/airlines_by_day_ES_original_colors.png" alt="airline_mentions_by_day" width="700" height="300">
+             <div style="width:image width px; font-size:80%; text-align:center;">
+            Mentions of airlines by day</div>
             <p><p/>
             <p align="justify">But in what context were the airlines mentioned? The table below shows the rank of each word in terms of number of ocurrence by airline. The word "url" are used after having all links replaced by the word "url". We will discuss later what could be the reason of having so many urls in the tweets.<p/>
+<div style="width:image width px; font-size:80%; text-align:center;">            
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -209,11 +218,10 @@
     <td class="tg-c3ow">canal</td>
   </tr>
 </table>
+Most frequently used words by airline</div>
 <p></p>
 <p align="justify">Most of the airlines are mentioned using the "@" sign in the tweets suggesting that by using Twitter's organic mention sign people wanted to communicate with the airline companies – except for Spanair, but it is reasonable to expect from a defunct company. The extensive use of "@"s is especially true for Iberia being @iberia the most frequently used word related to Iberia. Nevertheless, all other words at Iberia do not seem to have negative connotation. As for Ryanair, we see that probably a strike was going on (maybe that of pilots?), where flights were cancelled. As for Vueling, practically this company was mentioned related to the other airlines, we can see that both Ryanair and Iberia were mentioned along with Vueling. Spanair appeared as the accident had the anniversary.<p/>
 <p></p>
-
-
           </div>
         </div>
       </div>
@@ -224,11 +232,43 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Topic modelling</h2>
-            <p>Here we will explain what the hell is this.</p>
-            <p>Waiting for the latest version of the topic modelling</p>
-
+            <p align = "justify">For a greater depth about the tweets, we decided to use a topic modelling algorithm. The analysis was done with a conventional Latent Dirichlet Allocation (LDA) model in order to extract the volume and percentage contribution of each topic to get an idea of how important a topic is. Using the tool of LDA we get the following interactive visualization.</p>
+            <div style="width:image width px; font-size:80%; text-align:center;">
             <iframe src="https://borbota.github.io/jatszos/UB/lda.html" width="1200" height="500" frameborder="1" style="margin-left: -200px">
              </iframe> 
+            Topic modelling using LDA and LDAvis</div>
+            <p></p>
+            <p align = "justify">The Coherence score was used to select appropriate number of topics. After several runs it was decided to let it at 20 topics. Some of the topics are a little bit overlapped but the important and different ones appear clearly separated.</p>
+            <p class="lead"; align="justify">Inferring the topics from keywords</p>
+            <p align = "justify">After looking into all the keywords in the above graph the following topic names were deduced. For each tweet, a dominant topic was assigned. Tweets with a Topic probability lower than 20 percent were left uncategorized. When doing topic modelling, the topics are usually not 100 percent clean and clear, thus we have left some question marks in the picture below presenting the topics.</p>
+            <div style="width:image width px; font-size:80%; text-align:center;">
+            <p>A PICTURE OF THE TOPICS AND NAMES TO BE PUT HERE.</p>
+            picture captation</div>
+            <p class="lead"; align="justify">Iberia</p>
+            <p align = "justify">In the following plot all the topics and the percent of appearances are plotted. The X axis represents Iberia percentage and the Y axis represents the percentage from all the other companies together. Topics below the line are more important in Iberia dataset and topics above the line are more important for the other airlines.</p>
+            <div style="width:image width px; font-size:80%; text-align:center;">
+            <p>A PICTURE OF THE IBERIA VS. NON-IBERIA HERE.</p>
+            picture captation</div>
+            <p>The most relevant topics in Iberia are:
+              <ul>
+              <li>Topic 9 → #HolaDestino campaign;</li>
+              <li>Topic 7 → 25 anniversary of IberiaPlus;</li>
+              <li>Topic 0 → Iberia is 90 years old.</li>
+            </ul>
+            For each day every dominant topic is plotted in the graph below showing the timeline analysis of Iberia's most dominant topics.
+            </p>
+            <div style="width:image width px; font-size:80%; text-align:center;">
+            <p>PICTURE OF IBERA THINGIES HERE.</p>
+            picture captation</div>
+            <p>The chart suggests that:
+              <ul>
+              <li>The publicity campaign #holaDestino (topic 9) started on November 14 and finished on December 2.</li>
+              <li>The publicity campaign of the 25 years of IberiaPlus (topic 7) started on December 11 and finished on December 23. </li>
+              <li>On December 14, the most important topic is the 90th anniversary of Iberia (topic 0).</li>
+            </ul>
+            Thus, in conclusion what happened in December 14 is the anniversary of Iberia. More information about this campagin click <a href="https://www.iberia.com/es/90-aniversario/">here</a>. 
+          </p>
+
           </div>
         </div>
       </div>
@@ -250,7 +290,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">The members of the team are <a href="https://github.com/borbota">borbota</a>, <a href="https://github.com/jsantalo">jsantalo</a>, <a href="https://github.com/ldescampsvila">ldescampsvila</a>, and <a href="https://github.com/maytepenella">maytepenella</a>.
+        <p class="m-0 text-center text-white">The members of the happybirds team are <a href="https://github.com/borbota">borbota</a>, <a href="https://github.com/jsantalo">jsantalo</a>, <a href="https://github.com/ldescampsvila">ldescampsvila</a>, and <a href="https://github.com/maytepenella">maytepenella</a>.
         </p>
         <p></p>
         <p class="m-0 text-center text-white">Copyright &copy; happybirds 2018</p>
