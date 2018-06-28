@@ -64,13 +64,13 @@
           <div class="col-lg-8 mx-auto">
             <h2>Introduction</h2>
             <!-- <p class="lead"> -->
-            <p class="lead"; align="justify">This is the project documentation for the happybirds team’s solution for the capstone project during the postgraduate Data science and big data course of the University of Barcelona. Find more information about the program <a href="http://www.ub.edu/datascience/postgraduate/">here</a>. The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team has done and what technologies we have used.</p>
+            <p class="lead"; align="justify">This is site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data course of the University of Barcelona (more information about the program <a href="http://www.ub.edu/datascience/postgraduate/">here</a>). The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we have used.</p>
             
             <p align="justify">For the solution presented below, we have developed a project in python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
             
             <p align="justify">The problem to be solved is an airline sentiment tweet classification. The teams received two datasets: one in English tweets already classified and a second one in Spanish – to be classified by the students of the postgraduate course on a platform designed for this task.</p>
 
-            <p align="justify">The main motivation on working on a python project instead on doing it in a lengthy Jupyter Notebook was the flexibility a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea taking into account that it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by cleaning the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing a subsequent caos. On the other hand, having a final version as a python project enables any team member to execute the parts in the way she prefers. Also, it allows the team members to go as deep as they want if the code is correctly modularized. Finally, each team member has the chance to do this call by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
+            <p align="justify">The main motivation on working on a python project instead on doing it in a lengthy Jupyter Notebook was the flexibility a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea taking into account that it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing a subsequent chaos. On the other hand, having a final version as a python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to go as deep as they want if the code is correctly modularized. Finally, each team member has the chance to do this call by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
 
             <p align="justify">The sections below cover the the in-depth description of the steps taken towards the final solution in a chronological order, the results obtained, and the next steps that could have been potentially done on the Spanish dataset.</p>
 
@@ -114,7 +114,7 @@
             <p align="justify">If we look for the airlines mentioned, we see that it was Iberia, which was mentioned mostly on December 12, 2017. Actually, out of all airlines, mostly Iberia and Ryanair were mentioned in the tweets. Alltogether Iberia was mentioned 5100 times, whiel Ryanair 1938 and Vueling 204 times. All the rest were way below 200 mentions in the analyzed period. Thus we are focusing on Iberia.</p>
             <img src="img/airlines_by_day_ES_original_colors.png" alt="airline_mentions_by_day" width="700" height="300">
             <p><p/>
-            <p align="justify">But in what context were the airlines mentioned? The table below shows the rank of each word in terms of number of ocurrence by airline. (The word "url" are all links replaced by the word "url".)<p/>
+            <p align="justify">But in what context were the airlines mentioned? The table below shows the rank of each word in terms of number of ocurrence by airline. The word "url" are used after having all links replaced by the word "url". We will discuss later what could be the reason of having so many urls in the tweets.<p/>
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -209,6 +209,9 @@
     <td class="tg-c3ow">canal</td>
   </tr>
 </table>
+<p></p>
+<p align="justify">Most of the airlines are mentioned using the "@" sign in the tweets suggesting that by using Twitter's organic mention sign people wanted to communicate with the airline companies – except for Spanair, but it is reasonable to expect from a defunct company. The extensive use of "@"s is especially true for Iberia being @iberia the most frequently used word related to Iberia. Nevertheless, all other words at Iberia do not seem to have negative connotation. As for Ryanair, we see that probably a strike was going on (maybe that of pilots?), where flights were cancelled. As for Vueling, practically this company was mentioned related to the other airlines, we can see that both Ryanair and Iberia were mentioned along with Vueling. Spanair appeared as the accident had the anniversary.<p/>
+<p></p>
 
 
           </div>
@@ -247,6 +250,9 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
+        <p class="m-0 text-center text-white">The members of the team are <a href="https://github.com/borbota">borbota</a>, <a href="https://github.com/jsantalo">jsantalo</a>, <a href="https://github.com/ldescampsvila">ldescampsvila</a>, and <a href="https://github.com/maytepenella">maytepenella</a>.
+        </p>
+        <p></p>
         <p class="m-0 text-center text-white">Copyright &copy; happybirds 2018</p>
       </div>
       <!-- /.container -->
