@@ -117,7 +117,7 @@
             <h4>Final project architecture and code description</h4>
             <p align = "justify">The final project architecture is presented by the diagram below from high perspective what basic structure was applied. The main idea was to separate the different parts of the machine learning pipeline having the data load, data transformation, model training, model evaluation, and test check – all of which were translated into four different Python classes. These four classes are discussed below the flow chart.
             </p>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
             <img src="img/capstone_project_flow.png" alt="capstone_project_flow" width="700" height="500">
             Final project architecture</div>
             <p align = "justify">The first class imports the dataset and returns it into a Pandas dataframe. This separation was made serving generalization, as the dataset does not necessarily come from a .csv file, but could come from other source. We opted for this, as first we have received the English tweets dataset, and received the Spanish later during the course – at that point in an unknown format.</p>
@@ -126,9 +126,10 @@
             <p align = "justify">Finally, the fourth class performs all the calls to the different parts explained above and depending on the parameters of the calls it can optimize the hyperparameters, train, validate, test a model, and/or generate the required output.</p>
             <h4>Results</h4>
             <p align = "justify">For the validation test of the model, the configuration used was test_size=20%, validation_size=25%, and n_iterations=10.</p>
-              <div style="width:image width px; font-size:80%; text-align:center;">
-                <img src="img/big_RF_hyperparamether_tune.png" alt="big_RF_hyperparamether_tune">
-              Random Forest with Word2Vec</div>
+              
+            <center><img src="img/big_RF_hyperparamether_tune.png" align="middle"></center>
+            <div style="font-size:80%; text-align:center;">Random Forest with Word2Vec</div>
+            <p></p>
             <p align = "justify">Best Hyperparams: max_depth = 11; n_estimators = 483. The results obtained with this hyperparameters are:
               <ul>
               <li>Model best train score is: 0.8921381648654376</li>
@@ -150,18 +151,18 @@
             <p class="lead">Ad hoc analysis of an unbalanced dataset, or What was wrong with Iberia?</p>
             <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Spanair, Ryanair, Iberia, Aireurope, and Norwegianairline. As discussed above, the tweets' sentiments were annotated by the students of the postgrad course. The 48.1 percent of the tweets were annotated as negative, 32.5 percent as neutral, and 19.4 percent as positive. The chart below shows the distribution of the number of tweets by each sentiment by day. The day with the highest traffic was December 14, 2017 – most of the tweets issued being negative.</p>
             <p><p/>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
               <img src="img/sentiment_timeline_ES.png" alt="sentiment timeline" width="700" height="300">
             Distribution of sentiments by day</div>
             <p><p/>
             <p align="justify">If we look for the airlines mentioned, we see that it was Iberia, which was mentioned mostly on December 14, 2017. Actually, out of all airlines, mostly Iberia and Ryanair were mentioned in the tweets. Alltogether Iberia was mentioned 5100 times, whiel Ryanair 1938 and Vueling 204 times. All the rest were way below 200 mentions in the analyzed period. Thus we are focusing on Iberia.</p>
             <p><p/>
             <img src="img/airlines_by_day_ES_original_colors.png" alt="airline_mentions_by_day" width="700" height="300">
-             <div style="width:image width px; font-size:80%; text-align:center;">
+             <div style="font-size:80%; text-align:center;">
             Mentions of airlines by day</div>
             <p><p/>
             <p align="justify">But in what context were the airlines mentioned? The table below shows the rank of each word in terms of number of ocurrence by airline. The word "url" are used after having all links replaced by the word "url". We will discuss later what could be the reason of having so many urls in the tweets.<p/>
-<div style="width:image width px; font-size:80%; text-align:center;">            
+<div style="font-size:80%; text-align:center;">            
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -272,7 +273,7 @@ Most frequently used words by airline</div>
           <div class="col-lg-8 mx-auto">
             <h2>Topic modelling</h2>
             <p align = "justify">For a greater depth about the tweets, we decided to use a topic modelling algorithm. The analysis was done with a conventional Latent Dirichlet Allocation (LDA) model in order to extract the volume and percentage contribution of each topic to get an idea of how important a topic is. Using the tool of LDA we get the following interactive visualization.</p>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
             <iframe src="https://borbota.github.io/jatszos/UB/lda.html" width="1200" height="500" frameborder="1" style="margin-left: -200px">
              </iframe> 
             Topic modelling using LDA and LDAvis</div>
@@ -280,12 +281,12 @@ Most frequently used words by airline</div>
             <p align = "justify">The Coherence score was used to select appropriate number of topics. After several runs it was decided to let it at 20 topics. Some of the topics are a little bit overlapped but the important and different ones appear clearly separated.</p>
             <p class="lead"; align="justify">Inferring the topics from keywords</p>
             <p align = "justify">After looking into all the keywords in the above graph the following topic names were deduced. For each tweet, a dominant topic was assigned. Tweets with a Topic probability lower than 20 percent were left uncategorized. When doing topic modelling, the topics are usually not 100 percent clean and clear, thus we have left some question marks in the picture below presenting the topics.</p>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
               <img src="img/inferring_topics.png" alt="topics and names" width="700" height="400">
             Topics and their respective keywords</div>
             <p class="lead"; align="justify">Iberia</p>
             <p align = "justify">In the following plot all the topics and the percent of appearances are plotted. The X axis represents Iberia percentage and the Y axis represents the percentage from all the other companies together. Topics below the line are more important in Iberia dataset and topics above the line are more important for the other airlines.</p>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
               <img src="img/iberia_graph.png" alt="Iberia graph" width="700" height="400">
             Topics of Iberia vs. all other companies</div>
             <p>The most relevant topics in Iberia are:
@@ -296,7 +297,7 @@ Most frequently used words by airline</div>
             </ul>
             For each day every dominant topic is plotted in the graph below showing the timeline analysis of Iberia's most dominant topics.
             </p>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
               <img src="img/iberia_timeline.png" alt="Iberia graph" width="700" height="400">
             Timeline of Iberia's most dominant topics by day</div>
             <p>The chart suggests that:
@@ -310,7 +311,7 @@ Most frequently used words by airline</div>
 
           <p class="lead"; align="justify">Ryanair</p>
           <p align = "justify">Similarly, we had a look at the words used related to Ryanair vs. all other companies.</p>
-          <div style="width:image width px; font-size:80%; text-align:center;">
+          <div style="font-size:80%; text-align:center;">
             <img src="img/ryanair_graph.png" alt="Iberia graph" width="700" height="400">
             Topics of Ryanair vs. all other companies</div>
           <p>the most relevant topics in Ryanair are:
@@ -321,7 +322,7 @@ Most frequently used words by airline</div>
               <li>Topic 14 + Topic 13 → new hand luggage policy.</li>
             </ul>
             <p/>
-            <div style="width:image width px; font-size:80%; text-align:center;">
+            <div style="font-size:80%; text-align:center;">
             <img src="img/ryanair_timeline.png" alt="Iberia graph" width="700" height="400">
             Timeline of Ryanair's most dominant topics by day</div>
             <p align = "justify">The timeline analysis indicates the strike call was around December 11 and December 17. The strike was cancelled around December 18 and December 20. See more information <a href = "https://www.telegraph.co.uk/travel/news/ryanair-strike-flight-cancellations-your-rights/">here.</a></p>
