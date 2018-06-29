@@ -126,17 +126,64 @@
             <p align = "justify">Finally, the fourth class performs all the calls to the different parts explained above and depending on the parameters of the calls it can optimize the hyperparameters, train, validate, test a model, and/or generate the required output.</p>
             <h4>Results</h4>
             <p align = "justify">For the validation test of the model, the configuration used was test_size=20%, validation_size=25%, and n_iterations=10.</p>
-              
+            <h6 style="font-weight: bold;">Random Forest with Word2Vec</h6>
             <center><img src="img/big_RF_hyperparamether_tune.png" align="middle"></center>
             <div style="font-size:80%; text-align:center;">Random Forest with Word2Vec</div>
             <p></p>
-            <p align = "justify">Best Hyperparams: max_depth = 11; n_estimators = 483. The results obtained with this hyperparameters are:
-              <ul>
+            <p>Best Hyperparams: max_depth = 11; n_estimators = 483. The results obtained with this hyperparameters are:
+            <ul>
               <li>Model best train score is: 0.8921381648654376</li>
               <li>Model best validation score is: 0.5381194409148666</li>
               <li>Model test score is: 0.5285895806861499</li>
             </ul>
             </p>
+            <h6 style="font-weight: bold;">SVM with Word2Vec without normalization</h6>
+            <center><img src="img/big_SVM_hyperparamether_tune_v1.png" align="middle"></center>
+           <div style="font-size:80%; text-align:center;">SVM validation accuracy without normalization</div>
+           <p></p>
+            <p>Best Hyperparams: C = 695.1927961775606, gamma = 3.792690190732254e-05. The results obtained with this hyperparameters are:
+              <ul>
+              <li>Model best train score is: 0.609239245602882</li>
+              <li>Model best validation score is: 0.5609911054637865</li>
+              <li>Model test score is: 0.5292249047013977</li>
+            </ul>
+            </p>
+            <p></p>
+            <h6 style="font-weight: bold;">SVM with Word2Vec with normalization</h6>
+            <center><img src="img/big_SVM_hyperparamether_tune_v1_norm.png" align="middle"></center>
+           <div style="font-size:80%; text-align:center;">SVM validation accuracy with normalization</div>
+           <p></p>
+           <p>Best Hyperparams: C = 1.4384498882876628, gamma = 0.00615848211066026. The results obtained with this hyperparameters are:
+              <ul>
+              <li>Model best train score is: 0.695910150455605</li>
+              <li>Model best validation score is: 0.5508259212198221</li>
+              <li>Model test score is: 0.536848792884371</li>
+            </ul>
+            </p>
+            <p></p>
+            <h6 style="font-weight: bold;">SVM with mixed Word2Vec and BoW with normalization</h6>
+            <center><img src="img/big_SVM_hyperparamether_tune.png" align="middle"></center>
+           <div style="font-size:80%; text-align:center;">SVM mixed with Word2Vec and BoW validation accuracy with normalization</div>
+           <p></p>
+           <p>Best Hyperparams: C = 1.4384498882876628, gamma = 0.00615848211066026. The results obtained with this hyperparameters are:
+              <ul>
+              <li>Model best train score is: 0.7690188599279508</li>
+              <li>Model best validation score is: 0.5584498094027954</li>
+              <li>Model test score is: 0.554002541296061</li>
+            </ul>
+            </p>
+            <p></p>
+            <h4>Next steps</h4>
+            <p align = "justify">We are aware of the following steps, which were not performed by us, but could improve the model’s results performance:
+             <ul>
+              <li>Downsampling for the most labeled class that unbalance the dataset taking into account the correlation on the rows.</li>
+              <li>Do a deep correlation analysis on the columns in order to reduce the number of variables.</li>
+              <li>Do a hyperparameter optimization for the BoW and Word2Vec. Apply deep learning on neural networks.</li>
+            </ul>
+            </p>
+           
+            
+
 
           </div>
         </div>
