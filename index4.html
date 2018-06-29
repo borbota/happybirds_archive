@@ -64,7 +64,7 @@
           <div class="col-lg-8 mx-auto">
             <h2>Introduction</h2>
             <!-- <p class="lead"> -->
-            <p class="lead"; align="justify">This site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data course of the University of Barcelona (more information about the program <a href="http://www.ub.edu/datascience/postgraduate/">here</a>). The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we have used.</p>
+            <p class="lead"; align="justify">This site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data course of the University of Barcelona (for more information about the program click <a href="http://www.ub.edu/datascience/postgraduate/">here</a>). The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we have used.</p>
             
             <p align="justify">For the solution presented below, we have developed a project in python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
             
@@ -92,13 +92,51 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Project iterations</h2>
-            <h4>Example code playground and architecture project definition</h4>
-
-            <p>lorem ipsum</p>
-
+            <h4>Code playground and project architecture definition</h4>
+            <p align = "justify">We have started the project with experimenting, ie. “playing around” with the dataset in a Jupyter notebook. We have soon realized that using a notebook to store the final solution would be a problem when team members wanted to share they work with the rest of the team. We have agreed to start working on a centralized solution that made the code versioning easy.</p>
+            <p align = "justify">Upon designing the project architecture it was a clear objective to have two main parts separating the train and the evaluation/test parts – just like in case of any supervised machine learning project – in order to avoid common errors committed by mixing the two parts. We have also aimed at keeping the code as simple as possible.</p>
+            <h4>Transformation and first models</h4>
+            <p align = "justify">Once the architecture was defined, the next step was the transformation of the tweets’  text. The core transformations and feature engineering done were in order of execution:
+              <ul>
+              <li>count and remove URLs;</li>
+              <li>calculate uppercase ratio;</li>
+              <li>convert all tweets to lowercase;</li>
+              <li>check if tweet has emoticon and if so, how many;</li>
+              <li>determine text length;</li>
+              <li>count and remove three dots (“...”), question marks, exclamation marks and single dots;</li>
+              <li>tokenize corpus using SnowballStemmer as a lemmatizer; and</li>
+              <li>determine hour, day and day of week of the tweet.</li>
+            </ul>
+            </p>
+            <p align = "justify"> The first model was generated using Bag of Words (BoW) with a Naive Bayesian. We soon realized that for the BoW we were forced to split the transformation step into two parts, primarily because when building the BoW itself it was necessary to also train it. Thus if we wanted to fully split the transformation and the training part, we were forced to split the transformation in pre-transform and transform.</p>
+            <h4>Word2Vec and tuning parameters</h4>
+            <p align = "justify">After experimenting with some models like Random Forest and Support Vector Machine (SVM), we started exploring other alternatives instead, such as Word2Vec. After some research, we found out that Word2Vec is basically a neural network with a couple of layers. The basic idea is that two words are considered similar (and thus they will have similar vector representation) if they have similar neighbours (neighbour of a word understood as the words that surround this word). In that sense, we had the chance to work in a some kind of hybrid model having part of a seemingly neural network and a classical classifier as could be a SVM or Random Forest. Regarding the integration with the architecture defined, Word2Vec had a similar problem as BoW had: it had to be trained before transforming the data. Also Word2Vec required that the data was tokenized and transformed as a vector.
+            </p>
+            <p align = "justify">The last step we made was the tuning of the hyperparameters of both SVM and Random Forest. For the first one, we have also developed a normalization in order to ensure the model was receiving the correct data during the training. As happened with the BoW and Word2Vec, the normalization had a part that is considered training so we had to split it too to avoid errors. Finally, we have used the GridSearchCV library to tune up the hyperparameters for both SVM and Random Forest. For the SVM the C and the Gamma were tuned, and for Random Forest the maximum depth used and the number of estimators.
+            <p>
+            <h4>Final project architecture and code description</h4>
+            <p align = "justify">The final project architecture is presented by the diagram below from high perspective what basic structure was applied. The main idea was to separate the different parts of the machine learning pipeline having the data load, data transformation, model training, model evaluation, and test check – all of which were translated into four different Python classes. These four classes are discussed below the flow chart.
+            </p>
             <div style="width:image width px; font-size:80%; text-align:center;">
             <img src="img/capstone_project_flow.png" alt="capstone_project_flow" width="700" height="500">
-            Project flow</div>
+            Final project architecture</div>
+            <p align = "justify">The first class imports the dataset and returns it into a Pandas dataframe. This separation was made serving generalization, as the dataset does not necessarily come from a .csv file, but could come from other source. We opted for this, as first we have received the English tweets dataset, and received the Spanish later during the course – at that point in an unknown format.</p>
+            <p align = "justify">As mentioned earlier, given that we had to both train the BoW, the Word2Vec and/or had to normalize, we had to separate the transformation class’s processes in two parts. Firstly, the code transforms the data itself. After that, the user is supposed to train the BoW, Word2Vec or normalizator. Once done, there is a second function to be called in order to transform the data accordingly. The reason behind was that we wanted to ensure that both training and test executes the exact transformations to minimize functional errors. Given that one of our goals was also looking for flexibility, the architecture of the second transformation function allows the user to decide the usage combination of BoW and/or Word2Vec and/or normalization.</p>
+            <p align = "justify">The third class does the training for BoW, Word2Vec, normalization, and even optimization. After training, the model is stored in this class.</p>
+            <p align = "justify">Finally, the fourth class performs all the calls to the different parts explained above and depending on the parameters of the calls it can optimize the hyperparameters, train, validate, test a model, and/or generate the required output.</p>
+            <h4>Results</h4>
+            <p align = "justify">For the validation test of the model, the configuration used was test_size=20%, validation_size=25%, and n_iterations=10.</p>
+              <div style="width:image width px; font-size:80%; text-align:center;">
+                <img src="img/big_RF_hyperparamether_tune.png" alt="big_RF_hyperparamether_tune">
+              Random Forest with Word2Vec</div>
+            <p align = "justify">Best Hyperparams: max_depth = 11; n_estimators = 483. The results obtained with this hyperparameters are:
+              <ul>
+              <li>Model best train score is: 0.8921381648654376</li>
+              <li>Model best validation score is: 0.5381194409148666</li>
+              <li>Model test score is: 0.5285895806861499</li>
+            </ul>
+            </p>
+
           </div>
         </div>
       </div>
