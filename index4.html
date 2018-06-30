@@ -196,7 +196,58 @@
           <div class="col-lg-8 mx-auto">
             <h2>Insights</h2>
             <p class="lead">Ad hoc analysis of an unbalanced dataset, or What was happening with Iberia?</p>
-            <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Spanair, Ryanair, Iberia, Aireurope, and Norwegianairline. As discussed above, the tweets' sentiments were annotated by the students of the postgrad course. The 48.1 percent of the tweets were annotated as negative, 32.5 percent as neutral, and 19.4 percent as positive. The chart below shows the distribution of the number of tweets by each sentiment by day. The day with the highest traffic was December 14, 2017 – most of the tweets issued being negative.</p>
+            <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Aireurope (sic!), Iberia, Norwegianairline, Ryanair, and Spanair. However, the appeareance of the airlines is rather hectic. The table below contains these airlines, and some others, which popped up during the analysis.</p>
+            <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-s6z2{text-align:center}
+.tg .tg-spn1{background-color:#f9f9f9;text-align:center}
+.tg .tg-hgcj{font-weight:bold;text-align:center}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 223px" align = "center">
+<colgroup>
+<col style="width: 111px">
+<col style="width: 112px">
+</colgroup>
+  <tr>
+    <th class="tg-hgcj">airline</th>
+    <th class="tg-hgcj">number of mentions</th>
+  </tr>
+  <tr>
+    <td class="tg-spn1">Iberia<br></td>
+    <td class="tg-spn1">5100</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">Ryanair</td>
+    <td class="tg-s6z2">1938</td>
+  </tr>
+  <tr>
+    <td class="tg-spn1">Vueling</td>
+    <td class="tg-spn1">204</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">Spanair<br></td>
+    <td class="tg-s6z2">151</td>
+  </tr>
+  <tr>
+    <td class="tg-spn1">AirEuropa</td>
+    <td class="tg-spn1">40</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">Norwegian</td>
+    <td class="tg-s6z2">27</td>
+  </tr>
+  <tr>
+    <td class="tg-spn1">Jetblue</td>
+    <td class="tg-spn1">1</td>
+  </tr>
+</table>
+<div style="font-size:80%; text-align:center;">
+            Number of mentions of airlines in the dataset</div>
+            <p></p>
+
+            <p align = "justify">The tweets' sentiments were annotated by the students of the postgraduate course. The 48.1 percent of the tweets were annotated as negative, 32.5 percent as neutral, and 19.4 percent as positive. The chart below shows the distribution of the number of tweets by each sentiment by day. The day with the highest traffic was December 14, 2017 – most of the tweets issued being negative.</p>
             <p><p/>
             <div style="font-size:80%; text-align:center;">
               <img src="img/sentiment_timeline_ES.png" alt="sentiment timeline" width="700" height="300">
@@ -308,7 +359,7 @@ Most frequently used words by airline</div>
 <p></p>
 <p align="justify">Most of the airlines are mentioned using the "@" sign in the tweets suggesting that by using Twitter's organic mention sign people wanted to communicate with the airline companies – except for Spanair, but it is reasonable to expect from a defunct company. The extensive use of "@"s is especially true for Iberia being @iberia the most frequently used word related to Iberia. Nevertheless, all other words at Iberia do not seem to have negative connotation. As for Ryanair, we see that probably a strike was going on (maybe that of pilots?), where flights were cancelled. As for Vueling, practically this company was mentioned related to the other airlines, we can see that both Ryanair and Iberia were mentioned along with Vueling. Spanair appeared as the accident had the anniversary.<p/>
 <p></p>
-<p align = "justify">Now that we have a broad picture of our dataset, in order to understand exactly what has happened to Iberia, we take a dive into text analysis.</p>
+<p align = "justify">Now that we have a broad picture of our dataset, in order to understand exactly what has happened to Iberia, in the next part we take a dive into text analysis using a widely used method: topic modelling.</p>
           </div>
         </div>
       </div>
