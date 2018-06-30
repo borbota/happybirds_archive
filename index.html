@@ -179,7 +179,8 @@
              <ul>
               <li>Downsampling for the most labeled class that unbalance the dataset taking into account the correlation on the rows.</li>
               <li>Do a deep correlation analysis on the columns in order to reduce the number of variables.</li>
-              <li>Do a hyperparameter optimization for the BoW and Word2Vec. Apply deep learning on neural networks.</li>
+              <li>Do a hyperparameter optimization for the BoW and Word2Vec.</li>
+              <li>Apply deep learning on neural networks.</li>
             </ul>
             </p>
            
@@ -445,7 +446,54 @@ Most frequently used words by airline</div>
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Analysis of URLs</h2>
-            <p class="lead">and if needed, even more</p>
+            <p class="lead">What URLs were the users sharing?</p>
+            <p align = "justify">In the dataset of 7867 tweets, there were 5448 URLs. Some of the tweets had not a single URL, but a few had even three:
+              <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-s6z2{text-align:center}
+.tg .tg-spn1{background-color:#f9f9f9;text-align:center}
+.tg .tg-hgcj{font-weight:bold;text-align:center}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 263px" align = "center">
+<colgroup>
+<col style="width: 131px">
+<col style="width: 132px">
+</colgroup>
+  <tr>
+    <th class="tg-hgcj">number of URLs</th>
+    <th class="tg-hgcj">number of tweets</th>
+  </tr>
+  <tr>
+    <td class="tg-spn1">0</td>
+    <td class="tg-spn1">2684</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">1</td>
+    <td class="tg-s6z2">4745</td>
+  </tr>
+  <tr>
+    <td class="tg-spn1">2</td>
+    <td class="tg-spn1">361</td>
+  </tr>
+  <tr>
+    <td class="tg-s6z2">3</td>
+    <td class="tg-s6z2">4</td>
+  </tr>
+</table>
+<div style="font-size:80%; text-align:center;">
+            Number of URLs in tweets</div>
+<p></p>
+<p align = "justify">As Twitter by default shortens links, we have used a small script using the <a href="http://docs.python-requests.org/en/master/">Requests library<a> to unshorten them, so instead of "https://t.co/8c66y40ejv" we would see "https://www.grandesmedios.com/accidente-vuelo-5022-spanair/". As it is higly recommended to trick websites in order not to be rejected from the site, the snippet had a few seconds of sleeping built in.</p>
+<p align = "justify">Out of the 5448 links only 34 were still working (or curling was not omitted).  Most of the received long URLs were leading to Twitter posts or pictures, and only a handful lead to a news portal or a company website. A possible explanation for the few received long URLs could be – apart from the obvious that our URL unshortener code is wrong, – that the links lead to Twitter user's profiles, which do not exist any more (recall that most of the dataset is from last year). There is only one domain appearing more than once in the dataset: "hipertextual.com" coming from campaigns indicated by the ending of the link  ("utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed:+hipertextual").</p>
+<p align = "justify">Having a look at those tweets, which had three links in them, it turned out that three out of four were published by the same user: @joselitoba5. (These tweets are respectively: <a href="twitter.com/anyuser/status/948828000287625216">tweet 1</a>, <a href = "twitter.com/anyuser/status/948903621713911808">tweet 2</a>, and <a href="twitter.com/anyuser/status/931488275524710401">tweet 3</a>.) Among the shared links of this user appear the hipertextual.com domain. If we have a look at the content of that site, we see that it is fairly similar to the content published by @joselitoba5.
+ <div style="font-size:80%; text-align:center;">
+  <img src="img/joselitoba_hipertextual.png" width="700" height="400">
+  excerpt from @joselitoba5's Twitter wall and Hipertextual's Sniply stream</div>
+<p></p>
+<p align = "justify">@joselitoba5 published 48 900 tweets and has 29 followers – it seems that activity does not pay off for this user. Or @joselitoba5 is a bot using popular content to generate traffic on the Hipertextual Sniply site. The next step of the analysis could be to detect bots. As the dataset has the tweet ID, using the "twitter.com/anyuser/status/{tweetid}" formula, we could get back the user name, and based on that using the Twitter API we could download the profile information of our tweets' authors, their number of followers, number of tweets posted and age of profile, and a metric could be created trying to figure out whether a user is a bot or not.<p>
+            </p>
             
 
           </div>
