@@ -64,13 +64,13 @@
           <div class="col-lg-8 mx-auto">
             <h2>Introduction</h2>
             <!-- <p class="lead"> -->
-            <p class="lead"; align="justify">This site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data course of the University of Barcelona (for more information about the program click <a href="http://www.ub.edu/datascience/postgraduate/">here</a>). The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we have used.</p>
+            <p class="lead"; align="justify">This site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data <a href="http://www.ub.edu/datascience/postgraduate/">course </a> of the University of Barcelona. The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we have used.</p>
             
-            <p align="justify">For the solution presented below, we have developed a project in python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
+            <p align="justify">For the solution presented below, we have developed a project in Python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
             
             <p align="justify">The problem to be solved is an airline sentiment tweet classification. The teams of the postraduate course received two datasets: one with English tweets already classified and a second one in Spanish – to be classified by the students of the postgraduate course on a platform designed for this task.</p>
 
-            <p align="justify">The main motivation on working on a python project instead on doing it in a lengthy Jupyter Notebook was the flexibility a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea taking into account that it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing a subsequent chaos. Having a final version as a python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to go as deep as they want if the code is correctly modularized. Finally, each team member has the chance to do this call by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
+            <p align="justify">The main motivation on working on a Python project instead on doing it in a lengthy Jupyter Notebook was the flexibility a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea taking into account that it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing a subsequent chaos. Having a final version as a Python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to go as deep as they want if the code is correctly modularized. Finally, each team member has the chance to do this call by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
 
             <p align="justify">The sections below cover the in-depth description of the steps taken towards the final solution in a chronological order, the results obtained, and the next steps that could have been potentially done on the Spanish dataset.</p>
 
@@ -78,11 +78,13 @@
             <p>The project documentation covers the following:</p>
             <ul>
               <li>Machine learning project iterations</li>
-              <li>Description of the dataset</li>
+              <li>Insights of the dataset</li>
               <li>Topic modelling</li>
               <li>Analysis of URLs</li>
             </ul>
+            <p>To navigate between these parts use the menu on the top right corner.</p>
           </div>
+
         </div>
       </div>
     </section>
@@ -485,7 +487,7 @@ Most frequently used words by airline</div>
 <div style="font-size:80%; text-align:center;">
             Number of URLs in tweets</div>
 <p></p>
-<p align = "justify">As Twitter by default shortens links, we have used a small script using the <a href="http://docs.python-requests.org/en/master/">Requests library<a> to unshorten them, so instead of "https://t.co/8c66y40ejv" we would see "https://www.grandesmedios.com/accidente-vuelo-5022-spanair/". As it is higly recommended to trick websites in order not to be rejected from the site, the snippet had a few seconds of sleeping built in.</p>
+<p align = "justify">As Twitter by default shortens links, we have used a small script using the <a href="http://docs.Python-requests.org/en/master/">Requests library<a> to unshorten them, so instead of "https://t.co/8c66y40ejv" we would see "https://www.grandesmedios.com/accidente-vuelo-5022-spanair/". As it is higly recommended to trick websites in order not to be rejected from the site, the snippet had a few seconds of sleeping built in.</p>
 <p align = "justify">Out of the 5448 links only 34 were still working (or curling was not omitted).  Most of the received long URLs were leading to Twitter posts or pictures, and only a handful lead to a news portal or a company website. A possible explanation for the few received long URLs could be – apart from the obvious that our URL unshortener code is wrong, – that the links lead to Twitter user's profiles, which do not exist any more (recall that most of the dataset is from last year). There is only one domain appearing more than once in the dataset: "hipertextual.com" coming from campaigns indicated by the ending of the link  ("utm_medium=feed&utm_source=feedpress.me&utm_campaign=Feed:+hipertextual").</p>
 <p align = "justify">Having a look at those tweets, which had three links in them, it turned out that three out of four were published by the same user: @joselitoba5. (These tweets are respectively: <a href="http://www.twitter.com/anyuser/status/948828000287625216">tweet 1<a>, <a href = "http://www.twitter.com/anyuser/status/948903621713911808">tweet 2<a>, and <a href="http://www.twitter.com/anyuser/status/931488275524710401">tweet 3<a>.) Among the shared links of this user appear the hipertextual.com domain. If we have a look at the content of that site, we see that it is fairly similar to the content published by @joselitoba5.
  <div style="font-size:80%; text-align:center;">
