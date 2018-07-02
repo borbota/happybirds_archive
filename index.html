@@ -94,9 +94,12 @@
             <p align="justify">The main reason why we chose the Python project format instead of working on a lengthy Jupyter Notebook was the flexibility such a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea as it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing subsequent chaos. Having a final version as a Python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to experiment if the code is correctly modularized. Finally, each team member has the chance to do this by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
             <p align = "justify">Upon designing the project architecture it was a clear objective to have two main parts separating the train and the evaluation/test parts – just like in case of any supervised machine learning project – in order to avoid common errors committed by mixing the two parts. We have also aimed at keeping the code as simple as possible.</p>
             <br />
-            <h4>Transformation and first models</h4>
-            <p align = "justify">Once the architecture was defined, the next step was the transformation of the tweets’  text. The core transformations and feature engineering done were in order of execution:
+            <h4>Data cleanning, transformation and first models</h4>
+            <p align = "justify">Once the architecture was defined, the next step was to clean and transform the tweets’  text. The core transformations and feature engineering done were in order of execution:
               <ul>
+              <li>remove repeated tweets;</li>
+              <li>remove misleading tweets, i.e. "Spanair Accident" tweets were not classified with the same criterion;</li>
+              <li>transform to unicode characters;</li>
               <li>count and remove URLs;</li>
               <li>calculate uppercase ratio;</li>
               <li>convert all tweets to lowercase;</li>
