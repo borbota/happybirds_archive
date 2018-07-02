@@ -70,8 +70,6 @@
 
             <p align="justify">For the solution presented below, we have developed a project in Python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
 
-            <p align="justify">The main reason why we chose the Python project format instead of working on a lengthy Jupyter Notebook was the flexibility such a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea as it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing subsequent chaos. Having a final version as a Python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to experiment if the code is correctly modularized. Finally, each team member has the chance to do this by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
-
             <p align="justify">Firstly, the sections below cover the in-depth description of the steps taken for the solution of the classification problem in a chronological order, the results obtained, and the next steps that could have been potentially done on the Spanish dataset. Secondly, the insights are presented we have found upon analyzing the dataset. These two main parts are discussed in the following chapters:</p>
             <ul>
               <li>Machine learning project iterations</li>
@@ -92,8 +90,10 @@
           <div class="col-lg-8 mx-auto">
             <h2>Project iterations</h2>
             <h4>Code playground and project architecture definition</h4>
-            <p align = "justify">We have started the project with experimenting, ie. “playing around” with the dataset in a Jupyter notebook. We have soon realized that using a notebook to store the final solution would be a problem when team members wanted to share they work with the rest of the team. We have agreed to start working on a centralized solution that made the code versioning easy.</p>
+            <p align = "justify">We have started the project with experimenting, ie. “playing around” with the dataset in a Jupyter notebook. We have soon realized that using a notebook to store the final solution would be a problem when team members wanted to share they work with each other. We have agreed to start working on a centralized solution that made the code versioning easy.</p>
+            <p align="justify">The main reason why we chose the Python project format instead of working on a lengthy Jupyter Notebook was the flexibility such a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea as it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing subsequent chaos. Having a final version as a Python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to experiment if the code is correctly modularized. Finally, each team member has the chance to do this by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
             <p align = "justify">Upon designing the project architecture it was a clear objective to have two main parts separating the train and the evaluation/test parts – just like in case of any supervised machine learning project – in order to avoid common errors committed by mixing the two parts. We have also aimed at keeping the code as simple as possible.</p>
+            <br />
             <h4>Transformation and first models</h4>
             <p align = "justify">Once the architecture was defined, the next step was the transformation of the tweets’  text. The core transformations and feature engineering done were in order of execution:
               <ul>
@@ -102,30 +102,33 @@
               <li>convert all tweets to lowercase;</li>
               <li>check if tweet has emoticon and if so, how many;</li>
               <li>determine text length;</li>
-              <li>count and remove three dots (“...”), question marks, exclamation marks and single dots;</li>
+              <li>count and remove punctuation;</li>
               <li>tokenize corpus using SnowballStemmer as a lemmatizer; and</li>
               <li>determine hour, day and day of week of the tweet.</li>
             </ul>
             </p>
-            <p align = "justify"> The first model was generated using Bag of Words (BoW) with a Naive Bayesian. We soon realized that for the BoW we were forced to split the transformation step into two parts, primarily because when building the BoW itself it was necessary to also train it. Thus if we wanted to fully split the transformation and the training part, we were forced to split the transformation in pre-transform and transform.</p>
+            <p align = "justify"> The first model was generated using Bag of Words (BoW) with a Naive Bayes classifier. We soon realized that for the BoW we were forced to split the transformation step into two parts, primarily because when building the BoW itself it was necessary to also train it. Thus if we wanted to fully split the transformation and the training part, we were forced to split the transformation in pre-transform and transform.</p>
+            <br />
             <h4>Word2Vec and tuning parameters</h4>
-            <p align = "justify">After experimenting with some models like Random Forest and Support Vector Machine (SVM), we started exploring other alternatives instead, such as Word2Vec. After some research, we found out that Word2Vec is basically a neural network with a couple of layers. The basic idea is that two words are considered similar (and thus they will have similar vector representation) if they have similar neighbours (neighbour of a word understood as the words that surround this word). In that sense, we had the chance to work in a some kind of hybrid model having part of a seemingly neural network and a classical classifier as could be a SVM or Random Forest. Regarding the integration with the architecture defined, Word2Vec had a similar problem as BoW had: it had to be trained before transforming the data. Also Word2Vec required that the data was tokenized and transformed as a vector.
+            <p align = "justify">After experimenting with some models like Random Forest and Support Vector Machine (SVM), we started exploring other alternatives instead, such as Word2Vec. After some research we found out that Word2Vec is basically a neural network with a couple of layers. The basic idea is that two words are considered similar – and thus they will have similar vector representation – if they have similar neighbours (neighbour of a word understood as the words that surround this word). In that sense, we had the chance to work with a hybrid model with a part of a seemingly neural network and another part with a classical classifier, which could be SVM or Random Forest. Regarding the integration with the architecture defined, Word2Vec had a similar problem as BoW had: it had to be trained before transforming the data. Also Word2Vec required that the data was tokenized and transformed as a vector.
             </p>
-            <p align = "justify">The last step we made was the tuning of the hyperparameters of both SVM and Random Forest. For the first one, we have also developed a normalization in order to ensure the model was receiving the correct data during the training. As happened with the BoW and Word2Vec, the normalization had a part that is considered training so we had to split it too to avoid errors. Finally, we have used the GridSearchCV library to tune up the hyperparameters for both SVM and Random Forest. For the SVM, a RBF kernel was used and C (penalty parameter of the error term) and Gamma (Kernel coefficient) were tuned. For Random Forest the maximum depth used and the number of estimators were also tuned.
-            <p>
+            <p align = "justify">The last step we made was the tuning of the hyperparameters of both SVM and Random Forest. For the first one, we have also developed a normalization in order to ensure the model was receiving the correct data during the training. As happened with the BoW and Word2Vec, the normalization had a part that is considered training so we had to split it too to avoid errors. Finally, we have used the GridSearchCV library to tune up the hyperparameters for both SVM and Random Forest. For the SVM, a RBF kernel was used and C (penalty parameter of the error term) and Gamma (Kernel coefficient) were tuned. For Random Forest the maximum depth used and the number of estimators were also tuned.<p/>
+            <br />
             <h4>Final project architecture and code description</h4>
-            <p align = "justify">The final project architecture is presented by the diagram below from high perspective what basic structure was applied. The main idea was to separate the different parts of the machine learning pipeline having the data load, data transformation, model training, model evaluation, and test check – all of which were translated into four different Python classes. These four classes are discussed below the flow chart.
+            <p align = "justify">The chart below presents the basic structure of the final project architecture from high perspective. The main idea was to separate the different parts of the machine learning pipeline – such as the data load, data transformation, model training, model evaluation, and test check – all translated into four different Python classes. These four classes are discussed below the chart.
             </p>
             <div style="font-size:80%; text-align:center;">
             <img src="img/capstone_project_flow.png" alt="capstone_project_flow" width="700" height="500">
             Final project architecture</div>
             <p></p>
             <p align = "justify">The first class imports the dataset and returns it into a Pandas dataframe. This separation was made serving generalization, as the dataset does not necessarily come from a .csv file, but could come from other source. We opted for this, as first we have received the English tweets dataset, and received the Spanish later during the course – at that point in an unknown format.</p>
-            <p align = "justify">As mentioned earlier, given that we had to both train the BoW, the Word2Vec and/or had to normalize, we had to separate the transformation class’s processes in two parts. Firstly, the code transforms the data itself. After that, the user is supposed to train the BoW, Word2Vec or normalizator. Once done, there is a second function to be called in order to transform the data accordingly. The reason behind was that we wanted to ensure that both training and test executes the exact transformations to minimize functional errors. Given that one of our goals was also looking for flexibility, the architecture of the second transformation function allows the user to decide the usage combination of BoW and/or Word2Vec and/or normalization.</p>
+            <p align = "justify">As mentioned earlier, given that we had to both train the BoW, the Word2Vec and/or had to normalize, it was necessary to separate the transformation class’s processes in two parts. Firstly, the code transforms the data itself. After that, the user is supposed to train the BoW, Word2Vec or normalizator. Once done, there is a second function to be called in order to transform the data accordingly. The reason behind was that we wanted to ensure that both training and test executes the exact transformations to minimize functional errors. Given that one of our goals was also looking for flexibility, the architecture of the second transformation function allows the user to decide the usage combination of BoW and/or Word2Vec and/or normalization.</p>
             <p align = "justify">The third class does the training for BoW, Word2Vec, normalization, and even optimization. After training, the model is stored in this class.</p>
             <p align = "justify">Finally, the fourth class performs all the calls to the different parts explained above and depending on the parameters of the calls it can optimize the hyperparameters, train, validate, test a model, and/or generate the required output.</p>
+            <br />
             <h4>Results</h4>
             <p align = "justify">For the validation test of the model, the configuration used was test_size=20%, validation_size=25%, and n_iterations=10.</p>
+            <br />
             <h6 style="font-weight: bold;">Random Forest with Word2Vec</h6>
             <center><img src="img/big_RF_hyperparamether_tune.png" align="middle"></center>
             <div style="font-size:80%; text-align:center;">Random Forest with Word2Vec</div>
@@ -137,6 +140,7 @@
               <li>Model test score is: 0.5285895806861499</li>
             </ul>
             </p>
+            <br />
             <h6 style="font-weight: bold;">SVM with Word2Vec without normalization</h6>
             <center><img src="img/big_SVM_hyperparamether_tune_v1.png" align="middle"></center>
            <div style="font-size:80%; text-align:center;">SVM validation accuracy without normalization</div>
@@ -148,7 +152,7 @@
               <li>Model test score is: 0.5292249047013977</li>
             </ul>
             </p>
-            <p></p>
+            <br />
             <h6 style="font-weight: bold;">SVM with Word2Vec with normalization</h6>
             <center><img src="img/big_SVM_hyperparamether_tune_v1_norm.png" align="middle"></center>
            <div style="font-size:80%; text-align:center;">SVM validation accuracy with normalization</div>
@@ -160,7 +164,7 @@
               <li>Model test score is: 0.536848792884371</li>
             </ul>
             </p>
-            <p></p>
+            <br />
             <h6 style="font-weight: bold;">SVM with mixed Word2Vec and BoW with normalization</h6>
             <center><img src="img/big_SVM_hyperparamether_tune.png" align="middle"></center>
            <div style="font-size:80%; text-align:center;">SVM mixed with Word2Vec and BoW validation accuracy with normalization</div>
@@ -172,19 +176,16 @@
               <li>Model test score is: 0.554002541296061</li>
             </ul>
             </p>
-            <p></p>
-            <h4>Next steps</h4>
-            <p align = "justify">We are aware of the following steps, which were not performed by us, but could improve the model’s results performance:
+            <br />
+            <h4>A few remarks and next steps</h4>
+            <p align = "justify">It has to be noted that the three labels in the dataset were disproportionate, which does have an effect on the whole model. Also, our model might have fallen for overfitting. In order to improve the model's results performance, the following steps could be taken:
              <ul>
-              <li>Downsampling for the most labeled class that unbalance the dataset taking into account the correlation on the rows.</li>
+              <li>Downsample for the most labeled class that unbalance the dataset taking into account the correlation on the rows.</li>
               <li>Do a deep correlation analysis on the columns in order to reduce the number of variables.</li>
-              <li>Do a hyperparameter optimization for the BoW and Word2Vec.</li>
+              <li>Do a hyperparameter optimization for BoW and Word2Vec.</li>
               <li>Apply deep learning on neural networks.</li>
             </ul>
             </p>
-           
-            
-
 
           </div>
         </div>
@@ -196,7 +197,7 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Insights</h2>
-            <p class="lead">Ad hoc analysis of an unbalanced dataset, or What was happening with Iberia?</p>
+            <p class="lead">An ad hoc analysis of an unbalanced dataset, or What was happening with Iberia?</p>
             <p align="justify">The Spanish tweets dataset contains 7867 tweets from October 25, 2017 to January 8, 2018 downloaded using the keywords AirEurope, Aireurope (sic!), Iberia, Norwegianairline, Ryanair, and Spanair. However, the appeareance of the airlines is rather hectic. The table below contains these airlines, and some others, which popped up during the analysis.</p>
             <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
@@ -379,13 +380,15 @@ Most frequently used words by airline</div>
             Topic modelling using LDA and LDAvis</div>
             <p></p>
             <p align = "justify">The Coherence score was used to select appropriate number of topics. After several runs it was decided to let it at 20 topics. Some of the topics are a little bit overlapped but the important and different ones appear clearly separated.</p>
+            <br />
             <p class="lead"; align="justify">Inferring the topics from keywords</p>
             <p align = "justify">After looking into all the keywords in the above graph the following topic names were deduced. For each tweet, a dominant topic was assigned. Tweets with a topic probability lower than 20 percent were left uncategorized. When doing topic modelling, the topics are usually not 100 percent clean and clear, thus we have left some question marks in the picture below presenting the topics.</p>
             <div style="font-size:80%; text-align:center;">
               <img src="img/inferring_topics.png" alt="topics and names" width="700" height="400">
             Topics and their respective keywords</div>
+            <br />
             <p class="lead"; align="justify">Iberia</p>
-            <p align = "justify">In the following plot all the topics and the percent of appearances are plotted. The X axis represents Iberia percentage and the Y axis represents the percentage from all the other companies together. Topics below the line are more important in Iberia dataset and topics above the line are more important for the other airlines.</p>
+            <p align = "justify">In the following plot all the topics and the percent of appearances are displayed (please note that the chart was insipred by Christian Rudder's chart in Dataclysm about the word use of OkCupid profiles). The X axis represents Iberia percentage and the Y axis represents the percentage from all the other companies together. Topics below the line are more important in Iberia dataset and topics above the line are more important for the other airlines.</p>
             <div style="font-size:80%; text-align:center;">
               <img src="img/iberia_graph.png" alt="Iberia graph" width="700" height="400">
             Topics of Iberia vs. all other companies</div>
@@ -411,8 +414,7 @@ Most frequently used words by airline</div>
             </ul>
             Thus, in conclusion what happened in December 14 is the anniversary of Iberia. More information about this campagin click <a href="https://www.iberia.com/es/90-aniversario/">here</a>. It can be seen that Iberia invests a lot of time and effort to continuously have active campaigns, good and positive news. 
           </p>
-          <p></p>
-          <p></p>
+          <br />
           <p class="lead"; align="justify">Ryanair</p>
           <p align = "justify">Similarly, we had a look at the words used related to Ryanair vs. all other companies.</p>
           <div style="font-size:80%; text-align:center;">
