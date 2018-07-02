@@ -53,8 +53,8 @@
         <!-- <header class="bg-primary text-white"> -->
     <header style="background: url('img/sky_image_358.JPG')"
       <div class="container text-center">
-        <h1>happybirds</h1>
-        <p class="lead">university project archive</p>
+        <font color="white"><h1>university project archive</h1></font>
+        <font color="white"><p class="lead">–– happybirds team ––</p></font>
       </div>
     </header>
 
@@ -64,18 +64,15 @@
           <div class="col-lg-8 mx-auto">
             <h2>Introduction</h2>
             <!-- <p class="lead"> -->
-            <p class="lead"; align="justify">This site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data <a href="http://www.ub.edu/datascience/postgraduate/">course </a> of the University of Barcelona. The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we have used.</p>
+            <p class="lead"; align="justify">This site is the project documentation of the happybirds team for the capstone project for the postgraduate Data science and big data <a href="http://www.ub.edu/datascience/postgraduate/">course </a> of the University of Barcelona. The tasks were to develop a machine learning algorithm for an annotated dataset and to analyze the dataset for insights. Hereby we present what our team did and what technologies we used. The first part discusses the modelling, the later parts the insights we have found analyzing the dataset.</p>
             
+            <p align="justify">The problem to be solved for the capstone project is an airline sentiment tweet classification. The teams of the postraduate course received two datasets: one containing tweets in English already classified and a second dataset with tweets in Spanish, which was classified by the students of the postgraduate course on a platform designed for this task.</p>
+
             <p align="justify">For the solution presented below, we have developed a project in Python that has all the tools needed to run the necessary phases to import, transform, train, validate, test and optimize for a tweet sentiment classification. All codes are available in <a href="https://github.com/jsantalo/happybirds/">this Github repository</a>.</p>
-            
-            <p align="justify">The problem to be solved is an airline sentiment tweet classification. The teams of the postraduate course received two datasets: one with English tweets already classified and a second one in Spanish – to be classified by the students of the postgraduate course on a platform designed for this task.</p>
 
-            <p align="justify">The main motivation on working on a Python project instead on doing it in a lengthy Jupyter Notebook was the flexibility a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea taking into account that it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing a subsequent chaos. Having a final version as a Python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to go as deep as they want if the code is correctly modularized. Finally, each team member has the chance to do this call by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
+            <p align="justify">The main reason why we chose the Python project format instead of working on a lengthy Jupyter Notebook was the flexibility such a project has in terms of code sharing. Versioning a Jupyter Notebook can potentially be a bad idea as it stores all the results within. As a consequence, each time a team member re-executes even just one cell locally, Git recognises it as a change and asks to commit it. There is a way to avoid this phenomenon by resetting the notebook output each time a team member pulls or pushes changes. However, this can easily be forgotten causing subsequent chaos. Having a final version as a Python project enables any team member to execute the parts in the way she prefers. Also, it allows team members to experiment if the code is correctly modularized. Finally, each team member has the chance to do this by using her own Jupyter Notebook, iPython or even directly from the developing tool.</p>
 
-            <p align="justify">The sections below cover the in-depth description of the steps taken towards the final solution in a chronological order, the results obtained, and the next steps that could have been potentially done on the Spanish dataset.</p>
-
-
-            <p>The project documentation covers the following:</p>
+            <p align="justify">Firstly, the sections below cover the in-depth description of the steps taken for the solution of the classification problem in a chronological order, the results obtained, and the next steps that could have been potentially done on the Spanish dataset. Secondly, the insights are presented we have found upon analyzing the dataset. These two main parts are discussed in the following chapters:</p>
             <ul>
               <li>Machine learning project iterations</li>
               <li>Insights of the dataset</li>
