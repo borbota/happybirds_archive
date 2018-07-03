@@ -184,7 +184,7 @@
             <p align = "justify">The best model without the overfitting done in case of the Kaggle version is the combination of Word2Vec and BoW and train the dataset using SVM with the hyperparameters C = 1.44 and gamma = 0.006.</p>
             <br />            
             <h4>A few remarks and next steps</h4>
-            <p align = "justify">It has to be noted that the three labels in the dataset were disproportionate, which does have an effect on the whole model. Also, our model might have fallen for overfitting. In order to improve the model's results performance, the following steps could be taken:
+            <p align = "justify">It has to be noted that the three labels in the dataset were disproportionate, which does have an effect on the whole model. For instance, out of the 105 tweets in our dataset about the Spanair accident ("Así fue el accidente del vuelo 5022 de Spanair...") 64 were negatively and 41 were neutrally annotated. Also, our model might have fallen for overfitting. In order to improve the model's results performance, the following steps could be taken:
              <ul>
               <li>Downsample for the most labeled class that unbalance the dataset taking into account the correlation on the rows.</li>
               <li>Do a deep correlation analysis on the columns in order to reduce the number of variables.</li>
